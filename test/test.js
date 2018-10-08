@@ -17,6 +17,7 @@ const TEST_REPO_LATEST = 'alpine';
 const TEST_REPO_OLD = 'alpine:3.4';
 const TEST_PRIVATE_IMAGE = 'alpine-3.5';
 const TEST_PRIVATE_REPO = 'csy-mbp:5000/alpine';
+const TEST_PRIVATE_REGISTRY_URL = 'csy-mbp:5000';
 
 describe('Prepare Test', function() {
   this.timeout(60000);
@@ -122,7 +123,7 @@ describe('Watchtower', function() {
       this.timeout(60000);
 
       watchtower.upload(`./test/images/${TEST_PRIVATE_IMAGE}.tar.gz`, {
-        registryURL: 'csy-mbp:5000',
+        registryURL: TEST_PRIVATE_REGISTRY_URL,
         tagToLatest: true,
       }).then((repoTag) => {
         DEBUG(`${repoTag} uploaded`);

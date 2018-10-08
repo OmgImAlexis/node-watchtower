@@ -1,4 +1,4 @@
-import autobind from 'autobind-decorator';
+import autoBind from 'auto-bind';
 import Docker from 'dockerode';
 import debug from 'debug';
 import EventEmitter from 'events';
@@ -16,7 +16,6 @@ const DEFAULT_WATCHTOWER_LABEL = 'tw.chardi.watchtower';
  * @constructor
  * @extends EventEmitter
  */
-@autobind
 export default class Watchtower extends EventEmitter {
   /**
    * Constructor
@@ -42,6 +41,7 @@ export default class Watchtower extends EventEmitter {
    */
   constructor(configs = {}) {
     super();
+    autoBind(this);
     this.configs = Object.assign({
       /* Default configs */
       checkUpdateInterval: 180, /* in seconds */

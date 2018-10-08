@@ -1,1 +1,3 @@
-export default from './watchtower';
+/* eslint-disable-next-line no-global-assign */
+require = require('esm')(module);
+module.exports = require('./watchtower.js').default;
